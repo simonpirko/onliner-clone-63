@@ -12,4 +12,5 @@ public class DeliveryToAddress implements DeliveryType{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
+    public String address;
 }

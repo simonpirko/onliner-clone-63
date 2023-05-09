@@ -19,7 +19,10 @@ public class Shop {
     private String email;
     private String phone;
     private String address;
+    @Transient
     private Category category;
+    @Transient
     private Section section;
+    @Transient
     private Product product;
 }
