@@ -13,9 +13,9 @@ public class ParameterFactory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @OneToOne
-    PhoneParameter phoneParameter = null;
+    private PhoneParameter phoneParameter = null;
     @OneToOne
-    LaptopParameter laptopParameter = null;
+    private LaptopParameter laptopParameter = null;
 
     public Optional<Parameter> add(Parameter.Type type) {
         switch (type) {
