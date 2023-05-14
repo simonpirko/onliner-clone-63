@@ -19,6 +19,6 @@ public class User {
     private String name;
     private String username;
     private String password;
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Role role;
 }
