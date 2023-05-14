@@ -16,10 +16,10 @@ import javax.validation.Valid;
 @RequestMapping("/user")
 public class AuthorizationController {
     @GetMapping("/auth")
-    public String auth(Model model) {
-        model.addAttribute("userAuth", new User());
+    public String auth() {
         return "auth";
     }
+
     @PostMapping("/auth")
     public String auth(@ModelAttribute("userAuth") @Valid User user, BindingResult bindingResult, HttpServletRequest request) {
         String passDataBase = "";
