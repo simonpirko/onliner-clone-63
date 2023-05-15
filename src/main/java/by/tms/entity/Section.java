@@ -21,6 +21,6 @@ public class Section {
     private String name;
     private String image;
     private boolean is_active;
-    @ElementCollection
-    private List<String> categories;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Category> categories;
 }
