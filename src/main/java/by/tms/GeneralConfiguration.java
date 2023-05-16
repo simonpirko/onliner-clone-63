@@ -45,17 +45,18 @@ public class GeneralConfiguration {
     public HibernateTransactionManager transactionManager() {
         HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager();
         hibernateTransactionManager.setSessionFactory(factoryBean().getObject());
-        return transactionManager();
+        return hibernateTransactionManager;
     }
 
     private Properties hibernateProperties() {
-        Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        return properties;
+        Properties hibernateProperties = new Properties();
+        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+        return hibernateProperties;
     }
+
     @Bean
-    public SpringResourceTemplateResolver templateResolver(){
+    public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setPrefix("/pages/");
         templateResolver.setSuffix(".html");
@@ -65,7 +66,7 @@ public class GeneralConfiguration {
     }
 
     @Bean
-    public SpringTemplateEngine templateEngine(){
+    public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         templateEngine.setEnableSpringELCompiler(true);
@@ -73,9 +74,10 @@ public class GeneralConfiguration {
     }
 
     @Bean
-    public ThymeleafViewResolver viewResolver(){
+    public ThymeleafViewResolver viewResolver() {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
         return viewResolver;
     }
+
 }
