@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div th:insert="header :: head" ></div>
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://shop.mts.by/upload/iblock/8a0/wcn8rt5zp0n2mkx9a4f3wyoyhm3xdlt4/iPhone_14_Pro_Max_Purple_1.jpg" class="img-fluid" alt="Iphone 14" style="height:200px; width:150px">
+                </div>
+                <div class="col-md-8">
+                    <h5 class="mb-1">Iphone 14</h5>
+                    <p class="mb-1">$1000</p>
+                    <a href="#" class="btn btn-primary">Buy</a>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://mtscdn.ru/upload/iblock/e6d/SAMSUNG_PC_S22_PHANTOMBLACK_1500X1500_1.png" class="img-fluid" alt="Samsung" style="height:200px; width:150px">
+                </div>
+                <div class="col-md-8">
+                    <h5 class="mb-1">Samsung Galaxy S22</h5>
+                    <p class="mb-1">$800</p>
+                    <a href="#" class="btn btn-primary">Buy</a>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://mtscdn.ru/upload/iblock/d5f/1.jpg" class="img-fluid" alt="Huawei" style="height:200px; width:150px">
+                </div>
+                <div class="col-md-8">
+                    <h5 class="mb-1">Huawei P50</h5>
+                    <p class="mb-1">$600</p>
+                    <a href="#" class="btn btn-primary">Buy</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div th:insert="footer :: foot" ></div>
+</div>
+</body>
+</html>
