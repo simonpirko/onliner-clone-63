@@ -1,15 +1,11 @@
 package by.tms.entity.delivery;
 
+import by.tms.entity.AbstractEntity;
 import lombok.*;
 
-import javax.persistence.*;
-
-@Entity
 @Setter @Getter
 @Builder @NoArgsConstructor @AllArgsConstructor
-public class DeliveryToPickup implements DeliveryType{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class DeliveryToPickup extends AbstractEntity {
     private long id;
     private String city;
     private String street;

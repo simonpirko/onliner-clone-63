@@ -1,33 +1,25 @@
 package by.tms.entity.delivery;
 
+import by.tms.entity.AbstractEntity;
 import lombok.*;
 
-import javax.persistence.*;
 import java.util.Optional;
 
-@Entity
+import static java.util.Optional.*;
+
 @Setter @Getter
 @Builder @NoArgsConstructor @AllArgsConstructor
 public class DeliveryTypeFactory {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @OneToOne
-    private DeliveryToAddress address = null;
-    @OneToOne
-    private DeliveryToPickup pickup = null;
 
-    public Optional<DeliveryType> add(DeliveryType.Type type) {
+        public Optional<AbstractEntity> add(DeliveryType type) {
         switch (type) {
             case ADDRESS: {
-                address = new DeliveryToAddress();
-                return Optional.of(address);
+                return of(new DeliveryToAddress());
             }
             case PICKUP: {
-                pickup = new DeliveryToPickup();
-                return Optional.of(pickup);
+                return of(new DeliveryToPickup());
             }
         }
-        return Optional.empty();
+        return empty();
     }
 }
