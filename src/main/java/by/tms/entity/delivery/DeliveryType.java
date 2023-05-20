@@ -1,7 +1,5 @@
 package by.tms.entity.delivery;
 
-public interface DeliveryType {
-    public enum Type {
-        ADDRESS, PICKUP
-    }
+public enum DeliveryType {
+    ADDRESS, PICKUP
 }
