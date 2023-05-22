@@ -1,33 +1,28 @@
 package by.tms.entity;
 
+import by.tms.entity.parameter.ProductParameter;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
 @Table(name="products")
-@Setter
-@Getter
+@Setter @Getter
 @ToString
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+@Builder @AllArgsConstructor @NoArgsConstructor
+public class Product extends AbstractEntity{
     private String name;
-    @ElementCollection
-    private List<String> image;
-    @ElementCollection
-    private List<String> parameter;
-    @ElementCollection
-    private List<String> characteristics;
-    @ElementCollection
-    private List<String> stores;
-    private int vendorCode;
-    private  String category;
-    private String section;
+    private String itemNumber;
+    private long quantity;
+    private double price;
+    private String image;
+    @OneToOne
+    private User owner;
+    @OneToOne
+    private Category category;
+    @OneToMany
+    private List<ProductParameter> parameters;
+
+
 
 }
