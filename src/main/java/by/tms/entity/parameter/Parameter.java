@@ -1,5 +1,5 @@
 package by.tms.entity.parameter;
 
 public enum Parameter {
-    LAPTOP, PHONE
+    BATTERY_CAPACITY, SCREEN_SIZE, RAM, CAMERA, COLOR
 }
