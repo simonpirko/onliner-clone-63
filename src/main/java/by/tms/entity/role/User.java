@@ -1,5 +1,7 @@
-package by.tms.entity;
+package by.tms.entity.role;
 
+import by.tms.entity.AbstractEntity;
+import by.tms.entity.role.Role;
 import lombok.*;
 
 import javax.persistence.*;
@@ -8,7 +10,7 @@ import javax.persistence.*;
 @Setter @Getter
 @ToString
 @Builder @AllArgsConstructor @NoArgsConstructor
-public class User extends AbstractEntity{
+public class User extends AbstractEntity {
     private String name;
     private String username;
     private String password;

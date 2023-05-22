@@ -1,6 +1,7 @@
 package by.tms.entity;
 
 import by.tms.entity.parameter.ProductParameter;
+import by.tms.entity.role.User;
 import lombok.*;
 
 import javax.persistence.*;

@@ -2,7 +2,7 @@ package by.tms.entity.order;
 
 import by.tms.entity.AbstractEntity;
 import by.tms.entity.PaymentType;
-import by.tms.entity.User;
+import by.tms.entity.role.User;
 import by.tms.entity.delivery.DeliveryTypeFactory;
 import lombok.*;
 
