@@ -1,20 +1,19 @@
 package by.tms.entity.parameter;
 
+import by.tms.entity.AbstractEntity;
 import by.tms.entity.Product;
 import lombok.*;
 
 import javax.persistence.*;
 
-@Entity
 @Table(name = "productParameters")
 @Setter @Getter
 @Builder @NoArgsConstructor @AllArgsConstructor
-public class ProductParameter {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @OneToOne
+public class ProductParameter extends AbstractEntity {
+    private String value;
+    @ManyToOne
     private Product product;
     @OneToOne
-    private ParameterFactory parameterFactory;
+    private Parameter parameter;
+
 }
