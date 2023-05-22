@@ -4,18 +4,11 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Entity
 @Table(name="roles")
-@Setter
-@Getter
+@Setter @Getter
 @ToString
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+@Builder @AllArgsConstructor @NoArgsConstructor
+public class Role extends AbstractEntity{
     private String admin;
     private String user;
 }

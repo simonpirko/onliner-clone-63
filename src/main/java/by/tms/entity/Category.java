@@ -7,16 +7,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "category's")
-@Setter
-@Getter
+@Setter @Getter
 @ToString
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class Category {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+@Builder @AllArgsConstructor @NoArgsConstructor
+public class Category extends AbstractEntity{
     private String url;
     private String name;
     private String image;
