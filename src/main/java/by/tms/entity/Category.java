@@ -3,10 +3,9 @@ package by.tms.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "category's")
+@Table(name = "categories")
 @Setter @Getter
 @ToString
 @Builder @AllArgsConstructor @NoArgsConstructor

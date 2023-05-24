@@ -2,12 +2,13 @@ package by.tms.entity.order;
 
 import by.tms.entity.AbstractEntity;
 import by.tms.entity.PaymentType;
-import by.tms.entity.role.User;
-import by.tms.entity.delivery.DeliveryTypeFactory;
+import by.tms.entity.User;
+import by.tms.entity.delivery.DeliveryType;
 import lombok.*;
 
 import javax.persistence.*;
 
+@Entity
 @Table(name = "orders")
 @Setter @Getter
 @Builder @NoArgsConstructor @AllArgsConstructor
@@ -17,10 +18,8 @@ public class Order extends AbstractEntity {
     private long id;
     @OneToOne
     private User user;
-    @OneToOne
     private PaymentType paymentType;
-    @OneToOne
-    private DeliveryTypeFactory deliveryType;
+    private DeliveryType deliveryType;
     @OneToOne
     private OrderItem orderItems;
 }

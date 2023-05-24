@@ -1,6 +1,6 @@
 package by.tms.controller;
 
-import by.tms.entity.role.User;
+import by.tms.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;

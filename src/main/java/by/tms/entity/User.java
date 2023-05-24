@@ -1,11 +1,10 @@
-package by.tms.entity.role;
+package by.tms.entity;
 
-import by.tms.entity.AbstractEntity;
-import by.tms.entity.role.Role;
 import lombok.*;
 
 import javax.persistence.*;
 
+@Entity
 @Table(name = "users")
 @Setter @Getter
 @ToString
@@ -14,6 +13,4 @@ public class User extends AbstractEntity {
     private String name;
     private String username;
     private String password;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Role role;
 }

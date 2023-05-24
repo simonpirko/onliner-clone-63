@@ -6,6 +6,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
+@Entity
 @Table(name = "productParameters")
 @Setter @Getter
 @Builder @NoArgsConstructor @AllArgsConstructor
@@ -13,7 +14,6 @@ public class ProductParameter extends AbstractEntity {
     private String value;
     @ManyToOne
     private Product product;
-    @OneToOne
     private Parameter parameter;
 
 }
