@@ -20,8 +20,8 @@ public class Product extends AbstractEntity{
     private User owner;
     @OneToOne
     private Category category;
-//    @OneToMany
-//    private List<ProductParameter> parameters;
+    @OneToMany
+    private List<ProductParameter> parameters;
 
 
 
