@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create product</title>
+</head>
+<body>
+<div th:insert="header :: head"></div>
+<div class="container">
+    <div class="row align-items-center h-100">
+        <div class="col-md-8 offset-md-5">
+            <div class="col-sm-4 my-auto">
+                <form th:action="@{/product/create}" th:object="${newProduct}" method="post">
+                    <h4>Create new product</h4>
+                    <div class="d-grid gap-2">
+                        Product name:
+                        <input type="text" th:field="*{name}" placeholder="Product name">
+                        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+
+                        Item number:
+                        <input type="text" th:field="*{itemNumber}" placeholder="Item number">
+                        <p th:if="${#fields.hasErrors('itemNumber')}" th:errors="*{itemNumber}"></p>
+
+                        Image:
+                        <input type="text" th:field="*{image}" placeholder="Image">
+                        <p th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></p>
+
+                        Quantity:
+                        <input type="text" th:field="*{quantity}" placeholder="Quantity">
+                        <p th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></p>
+
+                        Price:
+                        <input type="text" th:field="*{price}" placeholder="Price">
+                        <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
+
+                        Category:
+                        <select name="category">
+                            <option th:each="category: ${categories}"
+                                    th:text="${category.name}"
+                                    th:value="${category.id}"></option>
+                        </select>
+                        <button class="btn btn-success">Create</button>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="footer :: foot"></div>
+</body>
+</html>
