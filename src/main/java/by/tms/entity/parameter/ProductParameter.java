@@ -14,6 +14,7 @@ public class ProductParameter extends AbstractEntity {
     private String value;
     @ManyToOne
     private Product product;
+    @ManyToOne
     private Parameter parameter;
 
 }

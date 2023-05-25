@@ -17,9 +17,9 @@ public class Product extends AbstractEntity{
     private double price;
     private String image;
     @OneToOne
-    private User owner;
-    @OneToOne
     private Category category;
+    @OneToOne
+    private User owner;
     @OneToMany
     private List<ProductParameter> parameters;
 
