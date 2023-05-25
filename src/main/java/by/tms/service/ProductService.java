@@ -3,9 +3,11 @@ package by.tms.service;
 import by.tms.dao.HibernateProductDao;
 import by.tms.dao.ProductDao;
 import by.tms.entity.Product;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProductService {
     private final ProductDao productDao = new HibernateProductDao();
 
