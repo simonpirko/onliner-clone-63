@@ -1,4 +1,4 @@
-package by.tms;
+package by.tms.controller;
 
 import by.tms.service.SectionService;
 import org.springframework.beans.factory.annotation.Autowired;

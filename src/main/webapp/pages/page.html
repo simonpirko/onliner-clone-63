@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<div class="container">
+    <div th:insert="header :: head" ></div>
+
+
+    <h1>${page.getH1()}</h1>
+    <div class="text"></div>
+
+
+
+    <div th:insert="footer :: foot" ></div>
+</div>
+</body>
+</html>

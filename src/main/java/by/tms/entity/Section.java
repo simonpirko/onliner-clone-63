@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="sections")
+@Table(name="section")
 @Setter
 @Getter
 @ToString
