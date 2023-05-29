@@ -17,17 +17,20 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan(basePackages = "by.tms")
+@ComponentScan(basePackages = "by.tms.entity")
 @EnableWebMvc
 @EnableTransactionManagement
 public class GeneralConfiguration {
+    private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
+    private static final String USERNAME = "postgres";
+    private static final String PASSWORD = "postgres";
 
     @Bean
     public DataSource dataSource() {
         BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
-        basicDataSource.setUsername("postgres");
-        basicDataSource.setPassword("postgres");
+        basicDataSource.setUrl(URL);
+        basicDataSource.setUsername(USERNAME);
+        basicDataSource.setPassword(PASSWORD);
         basicDataSource.setDriverClassName("org.postgresql.Driver");
         return basicDataSource;
     }
