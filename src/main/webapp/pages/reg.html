@@ -20,6 +20,14 @@
                     <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
                     <input type="text" class="form-control" th:field="*{password}" placeholder="Password"/>
                     <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                    <input type="text" class="form-control" th:field="*{code}" placeholder="Code 1"/>
+                    <p th:if="${#fields.hasErrors('code')}" th:errors="*{code}"></p>
+                    <input type="text" class="form-control" th:field="*{number}" placeholder="Number 1"/>
+                    <p th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></p>
+                    <input type="text" class="form-control" th:field="*{code}" placeholder="Code 2"/>
+                    <p th:if="${#fields.hasErrors('code')}" th:errors="*{code}"></p>
+                    <input type="text" class="form-control" th:field="*{number}" placeholder="Number 2"/>
+                    <p th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></p>
                     <div class="d-grid gap-2">
                         <button class="btn btn-success">Sign up</button>
                         <button class="btn btn-primary"><a href="/user/auth" style="color: aliceblue">Authorization</a>
