@@ -7,14 +7,15 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
+<div class="container">
 <div class="row align-items-center h-100">
     <div class="col-md-8 offset-md-5">
         <form th:action="@{/user/auth}" th:object="${userAuth}" method="post">
             <p>Authorization:</p>
             <div class="col-sm-4 my-auto">
-                <input type="text" th:field="*{username}" placeholder="Username"/>
+                <input type="text" class="form-control" th:field="*{username}" placeholder="Username"/>
                 <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
-                <input type="text" th:field="*{password}" placeholder="Password"/>
+                <input type="text" class="form-control" th:field="*{password}" placeholder="Password"/>
                 <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
                 <div class="d-grid gap-2">
                     <button class="btn btn-success">Sign up</button>
