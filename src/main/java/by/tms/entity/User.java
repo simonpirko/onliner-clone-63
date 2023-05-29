@@ -23,5 +23,5 @@ public class User {
     @ManyToOne(cascade = CascadeType.ALL)
     private Role role;
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Telephone> telephoneList;
+    private List<Telephone> telephones;
 }
