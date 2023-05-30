@@ -6,6 +6,15 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
+@org.hibernate.annotations.NamedQueries({
+        @org.hibernate.annotations.NamedQuery(name = "Remove",
+                query = "delete from Product p where p.id = :id"),
+        @org.hibernate.annotations.NamedQuery(name = "FindAll",
+                query = "from Product"),
+        @org.hibernate.annotations.NamedQuery(name = "FindByName",
+        query = "select p from Product p where p.name = :name")
+})
+
 @Entity
 @Table(name="products")
 @Setter @Getter
