@@ -1,17 +1,19 @@
 package by.tms.entity;
 
 import by.tms.entity.parameter.ProductParameter;
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
-@org.hibernate.annotations.NamedQueries({
-        @org.hibernate.annotations.NamedQuery(name = "Remove",
+@NamedQueries({
+        @NamedQuery(name = "HibernateProductDao.Remove",
                 query = "delete from Product p where p.id = :id"),
-        @org.hibernate.annotations.NamedQuery(name = "FindAll",
+        @NamedQuery(name = "HibernateProductDao.FindAll",
                 query = "from Product"),
-        @org.hibernate.annotations.NamedQuery(name = "FindByName",
+        @NamedQuery(name = "HibernateProductDao.FindByName",
         query = "select p from Product p where p.name = :name")
 })
 
