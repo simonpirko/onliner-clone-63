@@ -3,11 +3,11 @@ package by.tms.dao;
 import by.tms.entity.Product;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Component
+@Repository
 public class HibernateProductDao implements ProductDao {
     @Autowired
     private SessionFactory sessionFactory;
@@ -20,7 +20,7 @@ public class HibernateProductDao implements ProductDao {
     @Override
     public void remove(long id) {
         sessionFactory.getCurrentSession()
-                .getNamedQuery("Remove")
+                .getNamedQuery("HibernateProductDao.Remove")
                 .setParameter("id", id)
                 .executeUpdate();
     }
@@ -28,7 +28,7 @@ public class HibernateProductDao implements ProductDao {
     @Override
     public List<Product> findAll() {
         return (List<Product>) sessionFactory.getCurrentSession()
-                .getNamedQuery("FindAll")
+                .getNamedQuery("HibernateProductDao.FindAll")
                 .getResultList();
     }
 
@@ -41,7 +41,7 @@ public class HibernateProductDao implements ProductDao {
     @Override
     public Product findByProductName(String name) {
         return (Product) sessionFactory.getCurrentSession()
-                .getNamedQuery("FindByName")
+                .getNamedQuery("HibernateProductDao.FindByName")
                 .setParameter("name", name)
                 .getSingleResult();
     }

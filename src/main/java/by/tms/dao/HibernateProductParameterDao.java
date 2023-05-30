@@ -1,15 +1,15 @@
 package by.tms.dao;
 
-import by.tms.entity.Product;
-import by.tms.entity.User;
 import by.tms.entity.parameter.Parameter;
 import by.tms.entity.parameter.ProductParameter;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public class HibernateProductParameterDao implements ProductParameterDao{
+@Repository
+public class HibernateProductParameterDao implements ProductParameterDao {
     @Autowired
     private SessionFactory sessionFactory;
     private final static String DELETE_BY_ID = "delete from ProductParameter p where p.id = :id";
