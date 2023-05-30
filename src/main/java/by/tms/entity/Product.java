@@ -29,7 +29,7 @@ public class Product extends AbstractEntity{
     private Category category;
     @OneToOne
     private User owner;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<ProductParameter> parameters;
 
 
