@@ -25,13 +25,10 @@ public class Product extends AbstractEntity{
     private long quantity;
     private double price;
     private String image;
-    @OneToOne
+    @Enumerated(EnumType.STRING)
     private Category category;
     @OneToOne
     private User owner;
     @OneToMany(cascade = CascadeType.ALL)
     private List<ProductParameter> parameters;
-
-
-
 }
