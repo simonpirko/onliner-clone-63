@@ -23,12 +23,13 @@ public class HibernateUserDao {
         currentSession.save(user);
     }
 
-    public Optional<User> findByUsername(String username) {
-        Session currentSession = sessionFactory.getCurrentSession();
-        Query<User> query = currentSession.createQuery(FIND_BY_USERNAME);
-        query.setParameter(USERNAME, username);
-        User singleResult = query.getSingleResult();
-        return Optional.of(singleResult);
-    }
+    @Transactional
+        public Optional<User> findByUsername(String username) {
+            Session currentSession = sessionFactory.getCurrentSession();
+            Query<User> query = currentSession.createQuery(FIND_BY_USERNAME);
+            query.setParameter(USERNAME, username);
+            User singleResult = query.getSingleResult();
+            return Optional.of(singleResult);
+        }
 
 }
