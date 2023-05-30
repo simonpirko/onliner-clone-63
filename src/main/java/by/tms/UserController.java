@@ -4,13 +4,16 @@ import by.tms.dto.RegistrationUserDto;
 import by.tms.entity.Telephone;
 import by.tms.entity.User;
 import by.tms.service.UserService;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/user")
@@ -29,7 +32,7 @@ public class UserController {
     }
 
     @PostMapping("/reg")
-    public String reg(RegistrationUserDto userDto) {
+    public String reg(RegistrationUserDto userDto, HttpSession session) {
         Telephone telephone1 = Telephone.builder()
                 .number(userDto.getNumber1())
                 .code(userDto.getCode1()).build();
@@ -43,7 +46,27 @@ public class UserController {
                 .telephones(List.of(telephone1, telephone2))
                 .build();
         userService.createUser(user);
+        session.setAttribute("username", userDto.getUsername());
+        session.setAttribute("password", userDto.getPassword());
         return "redirect:/user/auth";
     }
 
+    @PostMapping("/auth")
+    public String auth(@ModelAttribute("username") String username, @ModelAttribute("password") String password, Model model) {
+        Optional<User> byUsername = userService.findByUsername(username);
+        if (byUsername.isPresent()) {
+            User user = byUsername.get();
+            if (user.getPassword().equals(password)) {
+                return "redirect:/user/req";
+            } else {
+                model.addAttribute("message", "Incorrect password!!!");
+
+            }
+        } else {
+            model.addAttribute("message", "User not found");
+        }
+        return "auth";
+
+    }
 }
+
