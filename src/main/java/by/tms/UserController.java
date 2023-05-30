@@ -16,6 +16,11 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+    private static final String USERNAME = "username";
+    private static final String PASSWORD = "password";
+    private static final String MESSAGE = "message";
+    private static final String USER_NOT_FOUND = "User not found !!!";
+    private static final String INCORRECT_PASSWORD = "Incorrect password !!!";
     @Autowired
     private UserService userService;
 
@@ -44,24 +49,24 @@ public class UserController {
                 .telephones(List.of(telephone1, telephone2))
                 .build();
         userService.createUser(user);
-        session.setAttribute("username", userDto.getUsername());
-        session.setAttribute("password", userDto.getPassword());
+        session.setAttribute(USERNAME, userDto.getUsername());
+        session.setAttribute(PASSWORD, userDto.getPassword());
         return "redirect:/user/auth";
     }
 
     @PostMapping("/auth")
-    public String auth(@ModelAttribute("username") String username, @ModelAttribute("password") String password, Model model) {
+    public String auth(@ModelAttribute(USERNAME) String username, @ModelAttribute(PASSWORD) String password, Model model) {
         Optional<User> byUsername = userService.findByUsername(username);
         if (byUsername.isPresent()) {
             User user = byUsername.get();
             if (user.getPassword().equals(password)) {
                 return "redirect:/user/req";
             } else {
-                model.addAttribute("message", "Incorrect password!!!");
+                model.addAttribute(MESSAGE, INCORRECT_PASSWORD);
 
             }
         } else {
-            model.addAttribute("message", "User not found.");
+            model.addAttribute(MESSAGE, USER_NOT_FOUND);
         }
         return "auth";
 
