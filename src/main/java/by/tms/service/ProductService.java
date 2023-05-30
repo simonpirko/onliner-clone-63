@@ -3,6 +3,7 @@ package by.tms.service;
 import by.tms.dao.HibernateProductDao;
 import by.tms.dao.ProductDao;
 import by.tms.entity.Product;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,26 +11,31 @@ import java.util.List;
 
 @Service
 public class ProductService {
+    @Autowired
     private final ProductDao productDao = new HibernateProductDao();
 
     @Transactional
-    public void save(Product product){
+    public void save(Product product) {
         productDao.save(product);
     }
 
-    public void remove(long id){
+    @Transactional
+    public void remove(long id) {
         productDao.remove(id);
     }
 
-    public List<Product> findAll(){
+    @Transactional
+    public List<Product> findAll() {
         return productDao.findAll();
     }
 
-    public Product findById(long id){
+    @Transactional
+    public Product findById(long id) {
         return productDao.findById(id);
     }
 
-    public Product findByProductName(String name){
+    @Transactional
+    public Product findByProductName(String name) {
         return productDao.findByProductName(name);
     }
 }
