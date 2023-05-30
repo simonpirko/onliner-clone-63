@@ -4,6 +4,7 @@ import by.tms.dao.HibernateUserDao;
 import by.tms.dao.UserDao;
 import by.tms.entity.User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
 public class UserService {
     private final UserDao userDao = new HibernateUserDao();
 
+    @Transactional
     public void save(User user) {
         userDao.save(user);
     }

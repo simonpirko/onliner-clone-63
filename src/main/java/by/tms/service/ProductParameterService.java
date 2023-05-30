@@ -5,13 +5,14 @@ import by.tms.dao.ProductParameterDao;
 import by.tms.entity.parameter.Parameter;
 import by.tms.entity.parameter.ProductParameter;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 public class ProductParameterService {
     private final ProductParameterDao productParameterDao = new HibernateProductParameterDao();
-
+    @Transactional
     public void save(ProductParameter productParameter){
         productParameterDao.save(productParameter);
     }

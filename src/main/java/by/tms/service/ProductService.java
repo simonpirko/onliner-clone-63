@@ -4,6 +4,7 @@ import by.tms.dao.HibernateProductDao;
 import by.tms.dao.ProductDao;
 import by.tms.entity.Product;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
 public class ProductService {
     private final ProductDao productDao = new HibernateProductDao();
 
+    @Transactional
     public void save(Product product){
         productDao.save(product);
     }
