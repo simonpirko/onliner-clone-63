@@ -14,8 +14,7 @@ public class HibernateProductDao implements ProductDao {
 
     @Override
     public void save(Product product) {
-        sessionFactory.getCurrentSession()
-                .save(product);
+        sessionFactory.getCurrentSession().save(product);
     }
 
     @Override
