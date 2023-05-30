@@ -63,7 +63,7 @@ public class UserController {
 
             }
         } else {
-            model.addAttribute("message", "User not found");
+            model.addAttribute("message", "User not found.");
         }
         return "auth";
 
