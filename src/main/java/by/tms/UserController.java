@@ -4,12 +4,10 @@ import by.tms.dto.RegistrationUserDto;
 import by.tms.entity.Telephone;
 import by.tms.entity.User;
 import by.tms.service.UserService;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.RequestContextHolder;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
