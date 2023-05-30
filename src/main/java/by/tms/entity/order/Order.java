@@ -3,7 +3,7 @@ package by.tms.entity.order;
 import by.tms.entity.AbstractEntity;
 import by.tms.entity.PaymentType;
 import by.tms.entity.User;
-import by.tms.entity.delivery.DeliveryType;
+import by.tms.entity.DeliveryType;
 import lombok.*;
 
 import javax.persistence.*;
