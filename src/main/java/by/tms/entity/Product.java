@@ -9,11 +9,11 @@ import javax.persistence.*;
 import java.util.List;
 
 @NamedQueries({
-        @NamedQuery(name = "HibernateProductDao.Remove",
+        @NamedQuery(name = "Product.remove",
                 query = "delete from Product p where p.id = :id"),
-        @NamedQuery(name = "HibernateProductDao.FindAll",
+        @NamedQuery(name = "Product.findAll",
                 query = "from Product"),
-        @NamedQuery(name = "HibernateProductDao.FindByName",
+        @NamedQuery(name = "Product.findByName",
         query = "select p from Product p where p.name = :name")
 })
 

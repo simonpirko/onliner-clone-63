@@ -20,7 +20,7 @@ public class HibernateProductDao implements ProductDao {
     @Override
     public void remove(long id) {
         sessionFactory.getCurrentSession()
-                .getNamedQuery("HibernateProductDao.Remove")
+                .getNamedQuery("Product.remove")
                 .setParameter("id", id)
                 .executeUpdate();
     }
@@ -28,7 +28,7 @@ public class HibernateProductDao implements ProductDao {
     @Override
     public List<Product> findAll() {
         return (List<Product>) sessionFactory.getCurrentSession()
-                .getNamedQuery("HibernateProductDao.FindAll")
+                .getNamedQuery("Product.findAll")
                 .getResultList();
     }
 
@@ -41,7 +41,7 @@ public class HibernateProductDao implements ProductDao {
     @Override
     public Product findByProductName(String name) {
         return (Product) sessionFactory.getCurrentSession()
-                .getNamedQuery("HibernateProductDao.FindByName")
+                .getNamedQuery("Product.findByName")
                 .setParameter("name", name)
                 .getSingleResult();
     }
