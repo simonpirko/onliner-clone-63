@@ -23,15 +23,15 @@ public class ProductParameterService {
     public void remove(long id){
         productParameterDao.remove(id);
     }
-
+    @Transactional(readOnly = true)
     public List<ProductParameter> findAll(){
         return productParameterDao.findAll();
     }
-
+    @Transactional(readOnly = true)
     public ProductParameter findById(long id){
         return productParameterDao.findById(id);
     }
-
+    @Transactional(readOnly = true)
     public ProductParameter findByProductName(Parameter parameter){
         return productParameterDao.findByParameter(parameter);
     }

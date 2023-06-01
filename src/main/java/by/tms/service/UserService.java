@@ -21,15 +21,15 @@ public class UserService {
     public void remove(long id) {
         userDao.remove(id);
     }
-
+    @Transactional(readOnly = true)
     public List<User> findAll() {
         return userDao.findAll();
     }
-
+    @Transactional(readOnly = true)
     public User findById(long id) {
         return userDao.findById(id);
     }
-
+    @Transactional(readOnly = true)
     public User findByProductName(String name) {
         return userDao.findByUsername(name);
     }

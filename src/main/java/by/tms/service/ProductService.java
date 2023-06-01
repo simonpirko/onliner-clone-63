@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional
 public class ProductService {
     @Autowired
     private ProductDao productDao;
@@ -21,15 +21,15 @@ public class ProductService {
     public void remove(long id) {
         productDao.remove(id);
     }
-
+    @Transactional(readOnly = true)
     public List<Product> findAll() {
         return productDao.findAll();
     }
-
+    @Transactional(readOnly = true)
     public Product findById(long id) {
         return productDao.findById(id);
     }
-
+    @Transactional(readOnly = true)
     public Product findByProductName(String name) {
         return productDao.findByProductName(name);
     }
