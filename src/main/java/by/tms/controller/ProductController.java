@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionContext;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -36,32 +37,45 @@ public class ProductController {
     public String createProduct(@ModelAttribute("newProduct") @Valid CreateProductDto dto,
                                 BindingResult bindingResult,
                                 HttpSession session) {
-        ProductParameter parameter1 = ProductParameter.builder()
-                .parameter(dto.getParameter1())
-                .value(dto.getParameterValue1())
-                .build();
+        Product product = getProduct(dto, session);
+        addProductInProductParameter(product);
+        productService.save(product);
+        return "createProduct";
+    }
 
-        ProductParameter parameter2 = ProductParameter.builder()
-                .parameter(dto.getParameter2())
-                .value(dto.getParameterValue2())
-                .build();
+    private void addProductInProductParameter(Product product){
+        for (ProductParameter parameter : product.getParameters()){
+            parameter.setProduct(product);
+        }
+    }
 
-        ProductParameter parameter3 = ProductParameter.builder()
-                .parameter(dto.getParameter3())
-                .value(dto.getParameterValue3())
-                .build();
-
-        Product product = Product.builder()
+    private Product getProduct(CreateProductDto dto,
+                               HttpSession session){
+        List<ProductParameter> parameters = getProductParameter(dto);
+        return Product.builder()
                 .name(dto.getName())
                 .itemNumber(dto.getItemNumber())
                 .image(dto.getImage())
                 .quantity(dto.getQuantity())
                 .price(dto.getPrice())
                 .category(dto.getCategory())
-                .parameters(List.of(parameter1, parameter2, parameter3))
+                .parameters(parameters)
                 .owner((User) session.getAttribute("user"))
                 .build();
-        productService.save(product);
-        return "createProduct";
+    }
+
+    private List<ProductParameter> getProductParameter(CreateProductDto dto){
+        return List.of(ProductParameter.builder()
+                        .parameter(dto.getParameter1())
+                        .value(dto.getParameterValue1())
+                        .build(),
+                ProductParameter.builder()
+                        .parameter(dto.getParameter2())
+                        .value(dto.getParameterValue2())
+                        .build(),
+                ProductParameter.builder()
+                        .parameter(dto.getParameter3())
+                        .value(dto.getParameterValue3())
+                        .build());
     }
 }
