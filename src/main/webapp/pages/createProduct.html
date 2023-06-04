@@ -8,48 +8,52 @@
 <div th:insert="header :: head"></div>
 
 <form th:action="@{/product/create}" th:object="${newProduct}" method="post">
-    <input type="text" th:field="*{name}" placeholder="Product name">
-    <br>
+    <input type="text" th:field="*{name}" placeholder="Name">
+    <p style="color: darkred" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
     <br>
     <input type="text" th:field="*{itemNumber}" placeholder="Item number">
-    <br>
+    <p style="color: darkred" th:if="${#fields.hasErrors('itemNumber')}" th:errors="*{itemNumber}"></p>
     <br>
     <input type="text" th:field="*{image}" placeholder="Image">
-    <br>
+    <p style="color: darkred" th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></p>
     <br>
     <input type="text" th:field="*{quantity}" placeholder="Quantity">
-    <br>
+    <p style="color: darkred" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></p>
     <br>
     <input type="text" th:field="*{price}" placeholder="Price">
-    <br>
+    <p style="color: darkred" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
     <br>
     <select th:field="*{category}">
-    <option value="PHONES">Phones</option>
-    <option value="LAPTOPS">Laptop</option>
-    <option value="HEADPHONES">Headphone</option>
+        <option value="PHONES">Phones</option>
+        <option value="LAPTOPS">Laptops</option>
+        <option value="HEADPHONES">Headphones</option>
     </select>
     <br>
-    <br>
-    <select th:field="*{parameters}">
+    <select name="parameter1">
         <option value="SCREEN_SIZE">Screen size</option>
         <option value="COLOR">Color</option>
         <option value="BATTERY_CAPACITY">Battery capacity</option>
+        <option value="CAMERA">Camera</option>
     </select>
-<!--    <input type="text" th:field="*{price}" placeholder="Price">-->
+    <input type="text" name="parameterValue1" placeholder="Parameter Value 1">
     <br>
-    <br>
-    <select th:field="*{parameters}">
+    <select name="parameter2">
         <option value="SCREEN_SIZE">Screen size</option>
         <option value="COLOR">Color</option>
         <option value="BATTERY_CAPACITY">Battery capacity</option>
+        <option value="CAMERA">Camera</option>
     </select>
-<!--    <input type="text" th:field="*{value}" placeholder="Price">-->
+    <input type="text" name="parameterValue2" placeholder="Parameter Value 2">
     <br>
+    <select name="parameter3">
+        <option value="SCREEN_SIZE">Screen size</option>
+        <option value="COLOR">Color</option>
+        <option value="BATTERY_CAPACITY">Battery capacity</option>
+        <option value="CAMERA">Camera</option>
+    </select>
+    <input type="text" name="parameterValue3" placeholder="Parameter Value 3">
     <br>
-    <button class="btn btn-success">Create</button>
-    <br>
-    <br>
-    <button class="btn btn-success">Create</button>
+    <button>Submit</button>
 </form>
 <div th:insert="footer :: foot"></div>
 </body>
