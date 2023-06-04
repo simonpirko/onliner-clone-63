@@ -18,7 +18,6 @@ import java.util.List;
 })
 
 @Entity
-@Table(name="products")
 @Setter @Getter
 @Builder @AllArgsConstructor @NoArgsConstructor
 public class Product extends AbstractEntity{

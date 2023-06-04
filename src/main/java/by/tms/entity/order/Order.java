@@ -9,7 +9,6 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "orders")
 @Setter @Getter
 @Builder @NoArgsConstructor @AllArgsConstructor
 public class Order extends AbstractEntity {
