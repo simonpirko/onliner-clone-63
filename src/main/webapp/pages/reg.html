@@ -14,13 +14,22 @@
             <form th:action="@{/user/reg}" th:object="${newUser}" method="post">
                 <p>Registration:</p>
                 <div class="col-sm-4 my-auto">
-                    <input type="text" th:field="*{name}" placeholder="Name"/>
+                    <input type="text" class="form-control" th:field="*{name}" placeholder="Name"/>
                     <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
-                    <input type="text" th:field="*{username}" placeholder="Username"/>
+                    <input type="text" class="form-control" th:field="*{username}" placeholder="Username"/>
                     <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
-                    <input type="text" th:field="*{password}" placeholder="Password"/>
+                    <input type="text" class="form-control" th:field="*{password}" placeholder="Password"/>
                     <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                    <input type="text" class="form-control" th:field="*{code1}" placeholder="Code 1"/>
+                    <p th:if="${#fields.hasErrors('code1')}" th:errors="*{code1}"></p>
+                    <input type="text" class="form-control" th:field="*{number1}" placeholder="Number 1"/>
+                    <p th:if="${#fields.hasErrors('number1')}" th:errors="*{number1}"></p>
+                    <input type="text" class="form-control" th:field="*{code2}" placeholder="Code 2"/>
+                    <p th:if="${#fields.hasErrors('code2')}" th:errors="*{code2}"></p>
+                    <input type="text" class="form-control" th:field="*{number2}" placeholder="Number 2"/>
+                    <p th:if="${#fields.hasErrors('number2')}" th:errors="*{number2}"></p>
                     <div class="d-grid gap-2">
+                        <p style="color: red" th:text="${message}"></p>
                         <button class="btn btn-success">Sign up</button>
                         <button class="btn btn-primary"><a href="/user/auth" style="color: aliceblue">Authorization</a>
                         </button>
