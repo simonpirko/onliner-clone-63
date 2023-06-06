@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+
 @Component
 public class HibernateUserDao {
     @Autowired
@@ -17,19 +18,18 @@ public class HibernateUserDao {
     private static final String USERNAME = "username";
 
 
-    @Transactional
     public void save(User user) {
         Session currentSession = sessionFactory.getCurrentSession();
         currentSession.save(user);
     }
 
-    @Transactional
-        public Optional<User> findByUsername(String username) {
-            Session currentSession = sessionFactory.getCurrentSession();
-            Query<User> query = currentSession.createQuery(FIND_BY_USERNAME);
-            query.setParameter(USERNAME, username);
-            User singleResult = query.getSingleResult();
-            return Optional.of(singleResult);
-        }
+
+    public Optional<User> findByUsername(String username) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query<User> query = currentSession.createQuery(FIND_BY_USERNAME);
+        query.setParameter(USERNAME, username);
+        User singleResult = query.getSingleResult();
+        return Optional.of(singleResult);
+    }
 
 }
