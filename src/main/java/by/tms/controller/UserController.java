@@ -1,5 +1,6 @@
 package by.tms.controller;
 
+import by.tms.dto.LoginUserDto;
 import by.tms.dto.RegistrationUserDto;
 import by.tms.entity.Telephone;
 import by.tms.entity.User;
@@ -16,8 +17,9 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    private static final String USERNAME = "username";
-    private static final String PASSWORD = "password";
+    private static final String USER = "user";
+    private static final String LOGIN_USER = "loginUser";
+    private static final String NEW_USER = "newUser";
     private static final String MESSAGE = "message";
     private static final String USER_NOT_FOUND = "User not found !!!";
     private static final String INCORRECT_PASSWORD = "Incorrect password !!!";
@@ -25,17 +27,19 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/reg")
-    public String reg() {
+    public String reg(Model model) {
+        model.addAttribute(NEW_USER, new RegistrationUserDto());
         return "reg";
     }
 
     @GetMapping("/auth")
-    public String auth() {
+    public String auth(Model model) {
+        model.addAttribute(LOGIN_USER, new LoginUserDto());
         return "auth";
     }
 
     @PostMapping("/reg")
-    public String reg(RegistrationUserDto userDto, HttpSession session) {
+    public String reg(@ModelAttribute(NEW_USER) RegistrationUserDto userDto) {
         Telephone telephone1 = Telephone.builder()
                 .number(userDto.getNumber1())
                 .code(userDto.getCode1()).build();
@@ -49,17 +53,16 @@ public class UserController {
                 .telephones(List.of(telephone1, telephone2))
                 .build();
         userService.createUser(user);
-        session.setAttribute(USERNAME, userDto.getUsername());
-        session.setAttribute(PASSWORD, userDto.getPassword());
         return "redirect:/user/auth";
     }
 
     @PostMapping("/auth")
-    public String auth(@ModelAttribute(USERNAME) String username, @ModelAttribute(PASSWORD) String password, Model model) {
-        Optional<User> byUsername = userService.findByUsername(username);
+    public String auth(@ModelAttribute(LOGIN_USER) LoginUserDto loginUserDto, Model model, HttpSession session) {
+        Optional<User> byUsername = userService.findByUsername(loginUserDto.getUsername());
         if (byUsername.isPresent()) {
             User user = byUsername.get();
-            if (user.getPassword().equals(password)) {
+            if (user.getPassword().equals(loginUserDto.getPassword())) {
+                session.setAttribute(USER, user);
                 return "redirect:/user/req";
             } else {
                 model.addAttribute(MESSAGE, INCORRECT_PASSWORD);
