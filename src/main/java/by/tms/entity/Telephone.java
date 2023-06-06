@@ -17,6 +17,4 @@ public class Telephone {
     private long id;
     private String code;
     private String number;
-    @OneToMany
-    private List<Telephone> telephones;
 }
