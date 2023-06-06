@@ -17,13 +17,14 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan(basePackages = "by.tms.entity")
+@ComponentScan(basePackages = "by.tms")
 @EnableWebMvc
 @EnableTransactionManagement
 public class GeneralConfiguration {
     private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
     private static final String USERNAME = "postgres";
     private static final String PASSWORD = "postgres";
+
 
     @Bean
     public DataSource dataSource() {
@@ -39,7 +40,7 @@ public class GeneralConfiguration {
     public LocalSessionFactoryBean factoryBean() {
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
         localSessionFactoryBean.setDataSource(dataSource());
-        localSessionFactoryBean.setPackagesToScan("by.tms");
+        localSessionFactoryBean.setPackagesToScan("by.tms.entity");
         localSessionFactoryBean.setHibernateProperties(hibernateProperties());
         return localSessionFactoryBean;
     }
@@ -82,5 +83,5 @@ public class GeneralConfiguration {
         viewResolver.setTemplateEngine(templateEngine());
         return viewResolver;
     }
-
 }
+
