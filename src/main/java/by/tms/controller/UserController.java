@@ -1,4 +1,4 @@
-package by.tms;
+package by.tms.controller;
 
 import by.tms.dto.RegistrationUserDto;
 import by.tms.entity.Telephone;
