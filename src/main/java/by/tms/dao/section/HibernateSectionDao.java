@@ -1,4 +1,4 @@
-package by.tms.dao;
+package by.tms.dao.section;
 
 import by.tms.entity.Section;
 import org.hibernate.Session;

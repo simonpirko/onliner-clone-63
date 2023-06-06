@@ -1,5 +1,6 @@
-package by.tms.dao;
+package by.tms.dao.user;
 
+import by.tms.dao.user.UserDao;
 import by.tms.entity.Product;
 import by.tms.entity.User;
 import org.hibernate.SessionFactory;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class HibernateUserDao implements UserDao{
+public class HibernateUserDao implements UserDao {
     @Autowired
     private SessionFactory sessionFactory;
     private final static String DELETE_BY_ID = "delete from User u where u.id = :id";

@@ -1,4 +1,4 @@
-package by.tms.dao;
+package by.tms.dao.productParameter;
 
 import by.tms.entity.parameter.Parameter;
 import by.tms.entity.parameter.ProductParameter;

@@ -1,6 +1,6 @@
 package by.tms.service;
 
-import by.tms.dao.UserDao;
+import by.tms.dao.user.UserDao;
 import by.tms.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package by.tms.dao;
+package by.tms.dao.product;
 
 import by.tms.entity.Product;
 import org.hibernate.SessionFactory;

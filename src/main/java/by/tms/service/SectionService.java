@@ -1,6 +1,6 @@
 package by.tms.service;
 
-import by.tms.dao.HibernateSectionDao;
+import by.tms.dao.section.HibernateSectionDao;
 import by.tms.entity.Section;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

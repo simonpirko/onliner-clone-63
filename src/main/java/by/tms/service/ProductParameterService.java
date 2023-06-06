@@ -1,7 +1,6 @@
 package by.tms.service;
 
-import by.tms.dao.HibernateProductParameterDao;
-import by.tms.dao.ProductParameterDao;
+import by.tms.dao.productParameter.ProductParameterDao;
 import by.tms.entity.parameter.Parameter;
 import by.tms.entity.parameter.ProductParameter;
 import org.springframework.beans.factory.annotation.Autowired;
