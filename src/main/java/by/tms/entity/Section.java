@@ -5,7 +5,8 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Setter @Getter
+@Setter
+@Getter
 @ToString
 @Builder @AllArgsConstructor @NoArgsConstructor
 public class Section extends AbstractEntity{
