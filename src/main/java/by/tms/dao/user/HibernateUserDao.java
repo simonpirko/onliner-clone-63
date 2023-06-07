@@ -13,9 +13,6 @@ import java.util.List;
 public class HibernateUserDao implements UserDao {
     @Autowired
     private SessionFactory sessionFactory;
-    private final static String DELETE_BY_ID = "delete from User u where u.id = :id";
-    private final static String FIND_ALL = "select u from User u";
-    private final static String FIND_BY_NAME = "select u from User u where u.username = :username";
     private static final String ID = "id";
     private static final String USERNAME = "username";
 
@@ -27,7 +24,7 @@ public class HibernateUserDao implements UserDao {
     @Override
     public void remove(long id) {
         sessionFactory.getCurrentSession()
-                .createQuery(DELETE_BY_ID, Product.class)
+                .getNamedQuery("User.remove")
                 .setParameter(ID, id)
                 .executeUpdate();
     }
@@ -35,7 +32,7 @@ public class HibernateUserDao implements UserDao {
     @Override
     public List<User> findAll() {
         return sessionFactory.getCurrentSession()
-                .createQuery(FIND_ALL, User.class)
+                .getNamedQuery("User.findAll")
                 .getResultList();
     }
 
@@ -47,8 +44,8 @@ public class HibernateUserDao implements UserDao {
 
     @Override
     public User findByUsername(String username) {
-        return sessionFactory.getCurrentSession()
-                .createQuery(FIND_BY_NAME, User.class)
+        return (User) sessionFactory.getCurrentSession()
+                .getNamedQuery("User.findByName")
                 .setParameter(USERNAME, username)
                 .getSingleResult();
     }

@@ -52,18 +52,18 @@ public class UserController {
                 .password(userDto.getPassword())
                 .telephones(List.of(telephone1, telephone2))
                 .build();
-        userService.createUser(user);
+        userService.save(user);
         return "redirect:/user/auth";
     }
 
     @PostMapping("/auth")
     public String auth(@ModelAttribute(LOGIN_USER) LoginUserDto loginUserDto, Model model, HttpSession session) {
-        Optional<User> byUsername = userService.findByUsername(loginUserDto.getUsername());
+        Optional<User> byUsername = userService.findByUserName(loginUserDto.getUsername());
         if (byUsername.isPresent()) {
             User user = byUsername.get();
             if (user.getPassword().equals(loginUserDto.getPassword())) {
                 session.setAttribute(USER, user);
-                return "redirect:/user/req";
+                return "home";
             } else {
                 model.addAttribute(MESSAGE, INCORRECT_PASSWORD);
 
