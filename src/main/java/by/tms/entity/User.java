@@ -14,8 +14,8 @@ public class User extends AbstractEntity {
     private String name;
     private String username;
     private String password;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Role role;
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    private Role role;
     @OneToMany(cascade = CascadeType.ALL)
     private List<Telephone> telephones;
 }
