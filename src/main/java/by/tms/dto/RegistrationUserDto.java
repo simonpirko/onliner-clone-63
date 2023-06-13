@@ -15,7 +15,7 @@ public class RegistrationUserDto {
     @NotBlank(message = "The field must be field in!!!")
     @NotNull(message = "The field must be field in!!!")
     private String name;
-    @Size(min = 5, max = 15, message = "The username must contain from 5 to 12 characters!!!")
+    @Size(min = 5, max = 20, message = "The username must contain from 5 to 12 characters!!!")
     private String username;
     @Size(min = 8, max = 12, message = "The password must contain from 8 to 15 characters!!!")
     private String password;
