@@ -8,9 +8,11 @@ import by.tms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,7 +41,10 @@ public class UserController {
     }
 
     @PostMapping("/reg")
-    public String reg(@ModelAttribute(NEW_USER) RegistrationUserDto userDto) {
+    public String reg(@ModelAttribute(NEW_USER) @Valid RegistrationUserDto userDto, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return "reg";
+        }
         Telephone telephone1 = Telephone.builder()
                 .number(userDto.getNumber1())
                 .code(userDto.getCode1()).build();
@@ -52,7 +57,7 @@ public class UserController {
                 .password(userDto.getPassword())
                 .telephones(List.of(telephone1, telephone2))
                 .build();
-        userService.createUser(user);
+        userService.save(user);
         return "redirect:/user/auth";
     }
 
